@@ -1,0 +1,15 @@
+class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        myset = set()
+        ans = [0] * 2
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] not in myset:
+                    myset.add(grid[i][j])
+                else:
+                    ans[0] = grid[i][j]
+        n2 = len(grid) * len(grid)
+        for k in range(1, n2+1):
+            if k not in myset:
+                ans[1] = k
+        return ans
